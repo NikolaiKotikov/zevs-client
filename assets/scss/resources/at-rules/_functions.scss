@@ -1,0 +1,44 @@
+/// Computes width of given number of columns.
+/// Gaps between columns are included to result width.
+/// Side gaps of the first and the last columns are excluded.
+///
+/// @param {number} $amount
+///   The number of columns must be an integer greater or equal 1.
+/// @return {string}
+
+@function col($amount) {
+  $result: '';
+  @if $amount < 1 {
+    @error "Property $amount must be greater or equal 1, received: #{$amount}";
+  } @else if round($amount) != $amount {
+    @error "Property $amount must be an integer, received: #{$amount}";
+  } @else if $amount == 1 {
+    $result: var(--grid-column-width);
+  } @else {
+    $result: calc(
+      var(--grid-column-width) *
+        #{$amount} +
+        var(--grid-gutter) *
+        (#{$amount - 1})
+    );
+  }
+  @return $result;
+}
+
+@function col-relative($amount, $total: var(--grid-columns)) {
+  @return calc(
+    (100% - var(--grid-gutter) * (#{$total} - 1)) / #{$total} * #{$amount} +
+      var(--grid-gutter) * (#{$amount - 1})
+  );
+}
+
+/// Computes value with --vh unit instead of default browser vh
+/// --vh variable must be set at root of the document
+///
+/// @param {number} $value
+///   The same value if you use default vh but without units, just number
+/// @return {string}
+///   calc expression
+@function custom-vh($value: 100) {
+  @return calc(var(--vh, 1vh) * #{$value});
+}

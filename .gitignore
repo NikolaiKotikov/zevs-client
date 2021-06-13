@@ -1,0 +1,126 @@
+############################
+# OS X
+############################
+
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+.Spotlight-V100
+.Trashes
+._*
+
+
+############################
+# Linux
+############################
+
+*~
+
+
+############################
+# Windows
+############################
+
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msm
+*.msp
+
+
+############################
+# Node.js
+############################
+
+lib-cov
+lcov.info
+pids
+logs
+results
+node_modules
+.node_history
+
+
+############################
+# Logs
+############################
+
+/logs
+.tmp
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+
+############################
+# Packages
+############################
+*.7z
+*.csv
+*.dat
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.seed
+*.so
+*.swo
+*.swp
+*.swn
+*.swm
+*.out
+*.pid
+*.tgz
+
+
+############################
+# Cache
+############################
+.cache
+# Optional npm cache directory
+.npm
+# Optional eslint cache
+.eslintcache
+
+
+############################
+# Node.js
+############################
+
+lib-cov
+lcov.info
+pids
+logs
+results
+node_modules
+.node_history
+.node_repl_history
+
+
+############################
+# Nuxt
+############################
+.nuxt
+dist
+.vuepress/dist
+.serverless
+
+
+############################
+# Misc.
+############################
+.env
+sw.*

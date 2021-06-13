@@ -1,0 +1,36 @@
+/*
+Example: h2-ddd
+h2 - name of component in design
+ddd - every symbol describes which mode of component
+is used on every breakpoint from highest to lowest
+we have three breakpoints in current project, so
+first symbol for laptop
+second for tablet
+third fro mobile
+
+possible symbols variations
+d - desktop
+t - tablet
+m - mobile
+
+in the example we have
+desktop on desktop
+desktop on tablet
+desktop on mobile
+*/
+@mixin h1-ddt {
+  font-weight: 700;
+  @include media('>=tablet') {
+    font-size: 80px;
+    line-height: 80px;
+    padding-top: 11px;
+    padding-bottom: 5px;
+  }
+
+  @include media('<tablet') {
+    font-size: 40px;
+    line-height: 48px;
+    padding-top: 10px;
+    padding-bottom: 6px;
+  }
+}

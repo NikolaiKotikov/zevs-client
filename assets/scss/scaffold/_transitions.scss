@@ -1,0 +1,31 @@
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
+
+.slide-leave-active,
+.slide-enter-active {
+  transition: transform 0.5s;
+}
+
+.slide-leave-active {
+  transform: translateY(100%);
+}
+
+.slide-enter {
+  transform: translateY(100%);
+}
+
+a,
+button,
+label,
+svg,
+g,
+path {
+  transition: color 0.3s, stroke 0.3s;
+}

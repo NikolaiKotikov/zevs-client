@@ -1,0 +1,15 @@
+// Z-index values
+$base: 10;
+$above: 1; // use this for all values above a value
+$below: -1; // and this for all values below a value
+
+// Page Layout
+$z-layout-header: $above + $base;
+$z-layout-menu: $below + $z-layout-header;
+
+/*
+Usage:
+.header {
+  z-index: $z-layout-header;
+}
+*/

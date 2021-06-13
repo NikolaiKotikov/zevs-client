@@ -1,0 +1,32 @@
+/* This file is included into '@/plugins/global.js'. You can access all styles
+  placed here inside vue templates through '$global' keyword.
+  Example: div(:class="$global.container")
+*/
+
+/* A11y */
+.srOnly {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/* Grid */
+.container {
+  width: 100%;
+  max-width: var(--max-content-width);
+  min-width: var(--min-content-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Utils */
+.ratio {
+  width: 100%;
+  padding-bottom: calc(var(--aspect-ratio, 1) * 100%);
+}

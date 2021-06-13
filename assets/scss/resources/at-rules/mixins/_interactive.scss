@@ -1,0 +1,8 @@
+@mixin hover-opacity {
+  transition: opacity 0.3s;
+  @include not-phones-and-tablets {
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}

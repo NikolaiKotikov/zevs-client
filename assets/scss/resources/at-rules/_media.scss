@@ -1,0 +1,24 @@
+/*
+Learn more about using this library from the link below:
+https://eduardoboucas.github.io/include-media/
+*/
+
+@import '~/node_modules/include-media/dist/include-media.scss';
+
+$breakpoints: (
+  mobile: 320px,
+  tablet: 768px,
+  laptop: 1648px,
+);
+
+/*
+Solution for fixing hover effects on touchscreens.
+Taken from this great article.
+https://medium.com/@mezoistvan/finally-a-css-only-solution-to-hover-on-touchscreens-c498af39c31c
+*/
+
+@mixin not-phones-and-tablets {
+  @media (hover: hover) and (pointer: fine) {
+    @content;
+  }
+}
