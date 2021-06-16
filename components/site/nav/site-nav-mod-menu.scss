@@ -1,0 +1,20 @@
+.el {
+  @include media('<laptop') {
+    background: $white;
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    transition: transform 0.5s;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+.link {
+  @include media('<laptop') {
+    font-weight: $bold;
+    color: $brand;
+    &:not(:last-child) {
+      margin-bottom: 25px;
+    }
+  }
+}

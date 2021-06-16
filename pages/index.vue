@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main :class="$style.el">
     <component
       :is="getComponentName(section.__component)"
       v-for="section in page.sections"
@@ -36,3 +36,9 @@ export default Vue.extend({
   },
 })
 </script>
+
+<style module lang="scss">
+.el {
+  padding-top: var(--header-height);
+}
+</style>

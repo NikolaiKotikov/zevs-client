@@ -1,8 +1,24 @@
 :root {
-  --max-content-width: 1648px;
+  --max-content-width: 1600px;
   --min-content-width: 320px;
 
-  --grid-sides: 0px;
-  --grid-gutter: 0px;
-  --grid-columns: 12;
+  @include media('>=laptop') {
+    --grid-sides: 142px;
+    --grid-columns: 12;
+  }
+
+  @include media('<laptop', '>=tablet') {
+    --grid-sides: 80px;
+    --grid-columns: 8;
+  }
+
+  @include media('>=tablet') {
+    --grid-gutter: 16px;
+  }
+
+  @include media('<tablet') {
+    --grid-sides: 37px;
+    --grid-gutter: 10px;
+    --grid-columns: 4;
+  }
 }

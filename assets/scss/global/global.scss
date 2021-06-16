@@ -20,7 +20,8 @@
 .container {
   width: 100%;
   max-width: var(--max-content-width);
-  min-width: var(--min-content-width);
+  padding-right: var(--grid-sides);
+  padding-left: var(--grid-sides);
   margin-left: auto;
   margin-right: auto;
 }

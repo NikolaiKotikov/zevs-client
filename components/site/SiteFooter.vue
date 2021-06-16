@@ -16,7 +16,7 @@ export default Vue.extend({
 <style module lang="scss">
 .footer {
   // demo
-  background: $black;
+  background: $accent;
   color: $white;
   height: 50px;
 }

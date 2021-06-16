@@ -1,18 +1,10 @@
 export const state = () => ({
   settings: {},
-  params: {
-    page: null,
-    category: null,
-    item: null,
-  },
 })
 
 export const mutations = {
   SET_SETTINGS(state, settings) {
     state.settings = settings
-  },
-  SET_PARAMS(state, { page, category, item }) {
-    state.params = { page, category, item }
   },
 }
 

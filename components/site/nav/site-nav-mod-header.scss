@@ -1,0 +1,17 @@
+.el {
+  @include media('>=laptop') {
+    padding-right: 50px;
+    padding-left: 50px;
+  }
+  @include media('<laptop') {
+    display: none;
+  }
+}
+
+.link {
+  @include media('>=laptop') {
+    &:not(:last-child) {
+      margin-right: 60px;
+    }
+  }
+}

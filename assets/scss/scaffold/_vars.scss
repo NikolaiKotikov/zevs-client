@@ -1,2 +1,11 @@
 :root {
+  @include media('>=laptop') {
+    --header-height: 140px;
+  }
+  @include media('<laptop', '>=tablet') {
+    --header-height: 67px;
+  }
+  @include media('<tablet') {
+    --header-height: 27px;
+  }
 }
