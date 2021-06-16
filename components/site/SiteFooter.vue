@@ -3,10 +3,11 @@ import Vue from 'vue'
 export default Vue.extend({
   name: 'SiteFooter',
   functional: true,
-  render(h, { data, props, $style }) {
+  render(h, { data, props, parent: { $store }, $style }) {
+    const copyright = $store.state.settings?.copyright?.title
     return (
       <footer {...data} class={$style.footer}>
-        Footer
+        <span>{copyright}</span>
       </footer>
     )
   },
@@ -15,9 +16,18 @@ export default Vue.extend({
 
 <style module lang="scss">
 .footer {
-  // demo
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: $accent;
   color: $white;
-  height: 50px;
+  @include media('>=laptop') {
+    min-height: 64px;
+    font-size: 14px;
+  }
+  @include media('<laptop') {
+    min-height: 31px;
+    font-size: 12px;
+  }
 }
 </style>
