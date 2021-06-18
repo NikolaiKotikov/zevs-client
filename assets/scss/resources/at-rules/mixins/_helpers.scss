@@ -2,3 +2,44 @@
 @mixin ratio {
   padding-bottom: calc(var(--aspect-ratio, 1) * 100%);
 }
+
+/*
+  * infinite line to the left
+  * parent must have position value other than static
+  * expects --background to be set
+  * example:
+  .some-class {
+    --background: yellow;
+    position: relative;
+    @include left-decorator;
+  }
+*/
+@mixin left-decorator {
+  &::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    bottom: 0;
+    right: 100%;
+    left: -50vw;
+    background: var(--background);
+  }
+}
+
+/*
+* Section with skewed side
+* Expects: --background, --border
+* Example:
+* .class {
+  --background: yellow
+  --border: 73%
+}
+*/
+@mixin skew-bg {
+  background: linear-gradient(
+    112deg,
+    var(--background) 0%,
+    var(--background) var(--border),
+    transparent var(--border)
+  );
+}

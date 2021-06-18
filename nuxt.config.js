@@ -2,6 +2,9 @@ import getLocalIdent from './utils/getLocalIndent'
 const isDev = process.env.NODE_ENV !== 'production'
 export default {
   ...(!isDev && { modern: 'client' }),
+  publicRuntimeConfig: {
+    strapiURL: process.env.STRAPI_URL || 'http://localhost:1337',
+  },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'zeus',
