@@ -1,0 +1,77 @@
+.el {
+  background: white;
+  padding-bottom: 20px;
+  @include media('>=laptop') {
+    padding-top: 20px;
+    padding-right: 45px;
+    padding-left: 45px;
+  }
+  @include media('<laptop') {
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+  @include media('<tablet') {
+  }
+}
+.title {
+  display: block;
+  font-weight: $bold;
+  @include media('>=laptop') {
+    font-size: 14px;
+    width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @include media('<laptop') {
+    font-size: 12px;
+  }
+}
+.caption {
+  display: block;
+  @include media('>=laptop') {
+    font-size: 14px;
+    width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @include media('<laptop') {
+    font-size: 12px;
+  }
+}
+.button {
+  display: block;
+  --color: #{$brand};
+  color: var(--color);
+  font-size: 14px;
+  text-transform: uppercase;
+  border-radius: 30px;
+  border: 1px solid var(--color);
+
+  width: 164px;
+  min-height: 23px;
+  margin-right: auto;
+  margin-left: auto;
+
+  @include media('>=laptop') {
+    margin-top: 20px;
+  }
+  @include media('<laptop') {
+    margin-top: 13px;
+  }
+
+  &:hover {
+    --color: #{$accent};
+  }
+}
+.image {
+  margin-left: auto;
+  margin-right: auto;
+
+  @include media('>=laptop') {
+    margin-bottom: 20px;
+  }
+  @include media('<laptop') {
+    margin-bottom: 15px;
+  }
+}
