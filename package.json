@@ -20,7 +20,7 @@
   "devDependencies": {
     "@nuxtjs/eslint-config": "^6.0.0",
     "@nuxtjs/eslint-module": "^3.0.2",
-    "@nuxtjs/style-resources": "^1.1.0",
+    "@nuxtjs/style-resources": "^1.2.1",
     "babel-eslint": "^10.1.0",
     "chokidar": "^3.5.1",
     "eslint": "^7.22.0",

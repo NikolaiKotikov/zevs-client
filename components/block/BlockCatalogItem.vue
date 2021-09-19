@@ -115,10 +115,11 @@ export default Vue.extend({
   }
   @include media('<laptop', '>=tablet') {
     font-size: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
   @include media('<tablet') {
     font-size: 16px;
+    margin-bottom: 10px;
   }
 }
 

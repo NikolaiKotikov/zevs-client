@@ -54,6 +54,7 @@ export default {
   // Style Resources module configuration: https://github.com/nuxt-community/style-resources-module/
   styleResources: {
     scss: ['./assets/scss/resources/**/*.scss'],
+    hoistUseStatements: true,
   },
 
   // nuxt-gsap module configuration: https://www.npmjs.com/package/nuxt-gsap-module
