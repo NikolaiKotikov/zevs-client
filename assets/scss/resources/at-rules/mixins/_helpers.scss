@@ -35,11 +35,20 @@
   --border: 73%
 }
 */
-@mixin skew-bg {
-  background: linear-gradient(
-    112deg,
-    var(--background) 0%,
-    var(--background) var(--border),
-    transparent var(--border)
-  );
+@mixin skew-bg($direction: 'ltr') {
+  @if $direction == 'ltr' {
+    background: linear-gradient(
+      112deg,
+      var(--background) 0%,
+      var(--background) var(--border),
+      $transparent var(--border)
+    );
+  } @else {
+    background: linear-gradient(
+      112deg,
+      $transparent 0%,
+      $transparent var(--border),
+      var(--background) var(--border)
+    );
+  }
 }

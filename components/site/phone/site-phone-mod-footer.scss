@@ -1,0 +1,10 @@
+.title {
+  font-weight: $bold;
+
+  @include media('>=laptop') {
+    font-size: 46px;
+  }
+  @include media('<laptop') {
+    font-size: 16px;
+  }
+}

@@ -48,7 +48,7 @@ export default {
   ],
 
   strapi: {
-    entities: ['settings', 'content'],
+    entities: ['settings', 'content', 'feedbacks'],
   },
 
   // Style Resources module configuration: https://github.com/nuxt-community/style-resources-module/
