@@ -11,6 +11,7 @@
 
 <script>
 import Vue from 'vue'
+import { generateHead } from '~/utils/generateHead'
 
 export default Vue.extend({
   name: 'PageIndex',
@@ -27,6 +28,9 @@ export default Vue.extend({
     return {
       page: {},
     }
+  },
+  head() {
+    return generateHead(this)
   },
   methods: {
     getComponentName(rawComponentName) {
