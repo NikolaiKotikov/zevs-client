@@ -5,6 +5,10 @@ export default Vue.extend({
   name: 'SectionAbout',
   functional: true,
   props: {
+    link: {
+      type: Object,
+      default: () => ({}),
+    },
     title: {
       type: String,
       default: '',
@@ -20,10 +24,15 @@ export default Vue.extend({
   },
   render(
     _,
-    { props: { title, content, certificateText }, parent: { $global }, $style }
+    {
+      data,
+      props: { title, content, certificateText, link },
+      parent: { $global },
+      $style,
+    }
   ) {
     return (
-      <section class={$style.el}>
+      <section class={$style.el} id={link.sectionId}>
         <div class={$global.container}>
           <h1 class={[$style.title]}>
             <SvgLogoVue class={$style.logo} theme={'light'} />

@@ -11,7 +11,7 @@ export default Vue.extend({
       default: 'header',
     },
   },
-  render(h, { props, parent: { $store }, $style }) {
+  render(h, { props, parent: { $store, $gsap }, $style }) {
     const propModToImportedStyle = { header: modHeader, menu: modMenu }
     const mod = propModToImportedStyle[props.mod]
     const navigation = $store.state.settings?.navigation
@@ -23,6 +23,12 @@ export default Vue.extend({
         {navigation.map((item) => {
           return (
             <a
+              vOn:click_prevent={() =>
+                $gsap.to(window, {
+                  duration: 1,
+                  scrollTo: { y: `#${item?.link?.sectionId}`, offsetY: 100 },
+                })
+              }
               class={[$style.link, mod.link]}
               href={'#' + item?.link?.sectionId}
             >

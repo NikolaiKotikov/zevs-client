@@ -10,10 +10,14 @@ export default Vue.extend({
   props: {
     title: { type: String, default: '' },
     form: { type: Object, default: () => ({}) },
+    link: {
+      type: Object,
+      default: () => ({}),
+    },
   },
   render(_, { parent: { $global }, props, $style }) {
     return (
-      <section class={$style.el}>
+      <section class={$style.el} id={props.link.sectionId}>
         <div class={[$global.container, $style.headline]}>
           <h2 class={$style.title}>
             <SvgLogoVue class={$style.logo} />

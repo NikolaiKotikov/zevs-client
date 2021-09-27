@@ -3,8 +3,8 @@
     <component
       :is="getComponentName(section.__component)"
       v-for="section in page.sections"
-      :key="section.__component"
       v-bind="section"
+      :key="section.__component"
     ></component>
   </main>
 </template>
