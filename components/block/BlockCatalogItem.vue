@@ -30,6 +30,7 @@ export default Vue.extend({
       props,
       data,
       parent: {
+        $store,
         $config: { strapiURL },
       },
       $style,
@@ -58,8 +59,21 @@ export default Vue.extend({
       <div {...data} class={$style.el}>
         <div class={$style.left}>
           <SvgLogoVue class={$style.logo} />
-          <BlockSliderControlsVue id={props.id} />
-          <BlockSliderVue slides={props.products} swiperOption={swiperOption} />
+          <BlockSliderControlsVue class={$style.controls} id={props.id} />
+          <BlockSliderVue
+            vOn:openSlide={(i) =>
+              $store.dispatch('modal/open', {
+                component: 'block-modal-product',
+                props: {
+                  slides: props.products,
+                  title: props.title,
+                  currentSlideIndex: i,
+                },
+              })
+            }
+            slides={props.products}
+            swiperOption={swiperOption}
+          />
         </div>
         <div class={$style.right}>
           <h2 class={$style.title} domPropsInnerHTML={props.title}></h2>
@@ -82,6 +96,12 @@ export default Vue.extend({
     grid-template-columns: 242px 300px;
     column-gap: 66px;
   }
+}
+
+.controls {
+  @include abs-center;
+  width: 100%;
+  z-index: 3;
 }
 
 .left {

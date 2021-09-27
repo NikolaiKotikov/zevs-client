@@ -18,7 +18,7 @@ export default Vue.extend({
     swiperOption: {
       type: Object,
       default: () => ({
-        slidesPerView: 2,
+        slidesPerView: 'auto',
         navigation: {
           nextEl: 'button[data-control="next"]',
           prevEl: 'button[data-control="prev"]',
@@ -37,10 +37,11 @@ export default Vue.extend({
     return (
       <div vSwiper={this.swiperOption}>
         <div class="swiper-wrapper">
-          {this.slides.map((slide) => {
+          {this.slides.map((slide, index) => {
             return (
               <div class="swiper-slide">
                 <this.slide.component
+                  vOn:openSlide={() => this.$emit('openSlide', index)}
                   mod={this.slide.mod}
                   {...{ props: slide }}
                 />

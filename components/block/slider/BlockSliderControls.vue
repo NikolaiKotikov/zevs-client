@@ -14,9 +14,9 @@ export default Vue.extend({
       default: 1,
     },
   },
-  render(h, { props, $style }) {
+  render(h, { data, props, $style }) {
     return (
-      <div class={[$style.controls, $style[props.size]]}>
+      <div {...data} class={[$style.controls, $style[props.size]]}>
         <button
           data-control={`prev${props.id}`}
           class={[$style.button, $style.prev]}
@@ -50,10 +50,6 @@ export default Vue.extend({
   }
 }
 .controls {
-  @include abs-center;
-  width: 100%;
-  z-index: 3;
-
   :global(.swiper-button-disabled) {
     opacity: 0;
     pointer-events: none;

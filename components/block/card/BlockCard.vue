@@ -1,9 +1,9 @@
 <script>
 import Vue from 'vue'
 import modCatalogDetailed from './block-card-mod-catalog_detailed.scss?module'
+import BaseImageVue from '~/components/base/BaseImage.vue'
 export default Vue.extend({
   name: 'BlockCard',
-  functional: true,
   props: {
     mod: {
       type: String,
@@ -22,48 +22,24 @@ export default Vue.extend({
       default: '',
     },
   },
-  render(
-    h,
-    {
-      props,
-      data,
-      parent: {
-        $config: { strapiURL },
-      },
-      $style,
-    }
-  ) {
+  render(_) {
     const propModToImportedStyle = { 'catalog-detailed': modCatalogDetailed }
-    const mod = propModToImportedStyle[props.mod]
-
-    const image = () => {
-      if (!props.image?.url) {
-        return null
-      }
-      const src = strapiURL + props.image.url
-      return <img src={src} class={[mod.image]}></img>
-    }
-    const title = () => {
-      return props.title ? <span class={mod.title}>{props.title}</span> : null
-    }
-    const caption = () => {
-      return props.caption ? (
-        <span class={mod.caption} domPropsInnerHTML={props.caption}></span>
-      ) : null
-    }
-
-    const button = () => {
-      return props.mod === 'catalog-detailed' ? (
-        <button class={mod.button}>Подробнее</button>
-      ) : null
-    }
+    const mod = propModToImportedStyle[this.mod]
 
     return (
       <div class={mod.el}>
-        {image()}
-        {title()}
-        {caption()}
-        {button()}
+        {this.image?.url ? (
+          <BaseImageVue image={this.image} class={[mod.image]} />
+        ) : null}
+        {this.title ? <span class={mod.title}>{this.title}</span> : null}
+        {this.caption ? (
+          <span class={mod.caption} domPropsInnerHTML={this.caption}></span>
+        ) : null}
+        {this.mod === 'catalog-detailed' ? (
+          <button vOn:click={() => this.$emit('openSlide')} class={mod.button}>
+            Подробнее
+          </button>
+        ) : null}
       </div>
     )
   },
