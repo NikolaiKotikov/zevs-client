@@ -51,6 +51,7 @@ export default {
   ],
 
   strapi: {
+    url: 'http://zeus.kotins.website/api',
     entities: ['settings', 'content', 'feedbacks'],
   },
 
