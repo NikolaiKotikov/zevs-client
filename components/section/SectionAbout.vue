@@ -21,13 +21,17 @@ export default Vue.extend({
       type: String,
       default: '',
     },
+    certificateImage: {
+      type: Object,
+      default: () => ({}),
+    },
   },
   render(
     _,
     {
       data,
-      props: { title, content, certificateText, link },
-      parent: { $global },
+      props: { title, content, certificateText, link, certificateImage },
+      parent: { $global, $store },
       $style,
     }
   ) {
@@ -40,7 +44,17 @@ export default Vue.extend({
           </h1>
           <div class={$style.text}>
             <div domPropsInnerHTML={content}></div>
-            <button class={$style.button}>{certificateText}</button>
+            <button
+              vOn:click={() =>
+                $store.dispatch('modal/open', {
+                  component: 'block-modal-image',
+                  props: { image: certificateImage },
+                })
+              }
+              class={$style.button}
+            >
+              {certificateText}
+            </button>
           </div>
         </div>
       </section>

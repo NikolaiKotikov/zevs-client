@@ -27,9 +27,7 @@ export default Vue.extend({
   bottom: 0;
   z-index: 100;
 
-  @include media('>=tablet') {
-    backdrop-filter: blur(20px);
-  }
+  backdrop-filter: blur(20px);
   @supports not (backdrop-filter: blur(20px)) {
     background-color: rgba(0, 0, 0, 0.5);
   }
