@@ -3,6 +3,7 @@ import Vue from 'vue'
 import SvgLogoVue from '../svg/SvgLogo.vue'
 import BlockSliderVue from './slider/BlockSlider.vue'
 import BlockSliderControlsVue from './slider/BlockSliderControls.vue'
+
 export default Vue.extend({
   name: 'BlockCatalogItem',
   functional: true,
@@ -107,10 +108,12 @@ export default Vue.extend({
 .left {
   position: relative;
   min-width: 0;
+
   :global(.swiper-container) {
     border-radius: 20px;
     box-shadow: 6px 11px 21px 0 rgba(0, 0, 0, 0.23);
   }
+
   :global(.swiper-slide) {
     height: auto;
     display: flex;
@@ -164,11 +167,11 @@ export default Vue.extend({
   }
 
   @include media('>=laptop') {
-    column-gap: 16px;
+    gap: 16px;
   }
 
   @include media('<laptop', '>=tablet') {
-    column-gap: 8px;
+    gap: 8px;
   }
 }
 
