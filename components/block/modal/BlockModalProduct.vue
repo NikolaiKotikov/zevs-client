@@ -69,27 +69,29 @@ export default Vue.extend({
         return null
       }
       return (
-        <div>
+        <div class={this.$style.contentScrollWrap}>
           {this.currentSlideContent?.title ? (
             <span
               class={this.$style.slideTitle}
               domPropsInnerHTML={this.currentSlideContent.title}
             />
           ) : null}
-          {this.currentSlideContent.specifications.map((item, index) => {
-            return (
-              <div key={'row' + index} class={this.$style.row}>
-                <span
-                  class={this.$style.rowTitle}
-                  domPropsInnerHTML={item.title}
-                />
-                <span
-                  class={this.$style.rowValue}
-                  domPropsInnerHTML={item.value}
-                />
-              </div>
-            )
-          })}
+          <div class={this.$style.contentScroll}>
+            {this.currentSlideContent.specifications.map((item, index) => {
+              return (
+                <div key={'row' + index} class={this.$style.row}>
+                  <span
+                    class={this.$style.rowTitle}
+                    domPropsInnerHTML={item.title}
+                  />
+                  <span
+                    class={this.$style.rowValue}
+                    domPropsInnerHTML={item.value}
+                  />
+                </div>
+              )
+            })}
+          </div>
         </div>
       )
     },
@@ -111,7 +113,7 @@ export default Vue.extend({
             </div>
             <div class={this.$style.sliderContainer}>
               {this.renderSlider()}
-              <div class="swiper-pagination" slot="pagination"></div>
+              <div class="swiper-pagination" slot="pagination" />
               <BlockSliderControlsVue class={this.$style.controls} />
             </div>
           </div>
@@ -140,7 +142,6 @@ export default Vue.extend({
 }
 .wrapper {
   height: 100%;
-  overflow-y: auto;
   // align-items: center;
   @include media('>=tablet') {
     display: grid;
@@ -154,18 +155,18 @@ export default Vue.extend({
   }
 }
 .el {
-  // min-height: 80%;
   position: relative;
   display: grid;
   @include media('>=laptop') {
     padding-bottom: 100px;
-    --border: 49%;
+    --border: 35%;
   }
   @include media('<laptop', '>=tablet') {
     --border: 40%;
     padding-bottom: 45px;
   }
   @include media('>=tablet') {
+    height: 80vh;
     box-shadow: 12px 23px 45px 0 rgba(0, 0, 0, 0.5);
     grid-template-columns: repeat(var(--grid-columns), 1fr);
     gap: var(--grid-gutter);
@@ -196,6 +197,7 @@ export default Vue.extend({
 }
 
 .title {
+  text-shadow: 1px 1px 5px black;
   font-weight: $bold;
   color: white;
   text-align: center;
@@ -264,18 +266,58 @@ export default Vue.extend({
 
 .content {
   @include media('>=laptop') {
-    padding-right: 55px;
+    padding-right: 25px;
     grid-column: 8/-1;
     padding-top: 190px;
+  }
+  @include media('>=tablet') {
+    height: 100%;
+    overflow-y: hidden;
   }
   @include media('<laptop', '>=tablet') {
     grid-column: 6/-1;
     padding-top: 55px;
-    padding-right: 20px;
   }
   @include media('<tablet') {
     padding-right: var(--grid-sides);
     padding-left: var(--grid-sides);
+  }
+}
+
+.contentScrollWrap {
+  @include media('>=tablet') {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: hidden;
+  }
+}
+.contentScroll {
+  --scrollbarBG: #cfd8dc;
+  --thumbBG: #{$brand};
+  @include media('>=laptop') {
+    padding-right: 30px;
+  }
+  @include media('>=tablet') {
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      width: 11px;
+    }
+    & {
+      scrollbar-width: thin;
+      scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+    }
+    &::-webkit-scrollbar-track {
+      background: var(--scrollbarBG);
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--thumbBG);
+      border-radius: 6px;
+      border: 3px solid var(--scrollbarBG);
+    }
+  }
+  @include media('<laptop', '>=tablet') {
+    padding-right: 20px;
   }
 }
 
