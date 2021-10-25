@@ -74,7 +74,7 @@ export default Vue.extend({
             <span
               class={this.$style.slideTitle}
               domPropsInnerHTML={this.currentSlideContent.title}
-            ></span>
+            />
           ) : null}
           {this.currentSlideContent.specifications.map((item, index) => {
             return (
@@ -106,10 +106,7 @@ export default Vue.extend({
             <div class={this.$style.headline}>
               <SvgLogoVue theme={'light'} class={this.$style.logo} />
               {this.title ? (
-                <h2
-                  class={this.$style.title}
-                  domPropsInnerHTML={this.title}
-                ></h2>
+                <h2 class={this.$style.title} domPropsInnerHTML={this.title} />
               ) : null}
             </div>
             <div class={this.$style.sliderContainer}>
@@ -165,11 +162,11 @@ export default Vue.extend({
     --border: 49%;
   }
   @include media('<laptop', '>=tablet') {
-    --border: 49%;
+    --border: 40%;
     padding-bottom: 45px;
   }
   @include media('>=tablet') {
-    box-shadow: 12px 23px 45px 0px rgba(0, 0, 0, 0.5);
+    box-shadow: 12px 23px 45px 0 rgba(0, 0, 0, 0.5);
     grid-template-columns: repeat(var(--grid-columns), 1fr);
     gap: var(--grid-gutter);
     --background: #{$brand};
@@ -298,9 +295,14 @@ export default Vue.extend({
 .rowTitle {
   font-weight: $bold;
   padding-right: 15px;
+  width: 60%;
 }
 .rowValue {
   font-weight: $regular;
+  width: 40%;
+  flex: none;
+  text-align: right;
+  word-break: break-all;
 }
 
 .slide {
@@ -371,9 +373,10 @@ export default Vue.extend({
       :global {
         .swiper-pagination {
           width: 100%;
-          bottom: 0px;
+          bottom: 0;
         }
         .swiper-pagination-bullet {
+          box-shadow: 0 0 5px black;
           vertical-align: middle;
           background-color: white;
           opacity: 0.6;
