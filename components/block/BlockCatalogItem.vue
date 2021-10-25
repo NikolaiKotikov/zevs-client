@@ -139,6 +139,7 @@ export default Vue.extend({
     font-size: 20px;
     margin-bottom: 20px;
   }
+
   @include media('<tablet') {
     font-size: 16px;
     margin-bottom: 10px;

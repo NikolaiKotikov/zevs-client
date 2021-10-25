@@ -267,6 +267,7 @@ export default Vue.extend({
       display: none;
     }
   }
+
   @include media('<laptop', '>=tablet') {
     font-size: 16px;
   }
@@ -311,6 +312,7 @@ export default Vue.extend({
     padding-top: 11px;
     padding-bottom: 7px;
   }
+
   @include media('<tablet') {
     position: relative;
     padding-top: 12px;
