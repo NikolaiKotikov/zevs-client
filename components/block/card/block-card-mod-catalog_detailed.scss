@@ -1,6 +1,8 @@
 .el {
   background: white;
   padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
   @include media('>=laptop') {
     padding-top: 20px;
     padding-right: 45px;
@@ -29,6 +31,7 @@
 }
 .caption {
   display: block;
+  margin-bottom: auto;
   @include media('>=laptop') {
     font-size: 14px;
     width: 320px;
@@ -67,6 +70,7 @@
 .image {
   margin-left: auto;
   margin-right: auto;
+  margin-top: 50px;
 
   @include media('>=laptop') {
     margin-bottom: 20px;

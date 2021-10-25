@@ -43,7 +43,7 @@ export default Vue.extend({
       return props.thumbs.map((thumb) => {
         return (
           <div class={$style.thumb}>
-            <img src={strapiURL + thumb.url}></img>
+            <img src={strapiURL + thumb.url} />
           </div>
         )
       })
@@ -76,7 +76,7 @@ export default Vue.extend({
           />
         </div>
         <div class={$style.right}>
-          <h2 class={$style.title} domPropsInnerHTML={props.title}></h2>
+          <h2 class={$style.title} domPropsInnerHTML={props.title} />
           <div class={$style.thumbs}>{thumbs()}</div>
         </div>
       </div>
@@ -109,9 +109,11 @@ export default Vue.extend({
   min-width: 0;
   :global(.swiper-container) {
     border-radius: 20px;
-    box-shadow: 6px 11px 21px 0px rgba(0, 0, 0, 0.23);
+    box-shadow: 6px 11px 21px 0 rgba(0, 0, 0, 0.23);
   }
   :global(.swiper-slide) {
+    height: auto;
+    display: flex;
     overflow: hidden;
   }
 }
@@ -175,7 +177,7 @@ export default Vue.extend({
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 5px 11px 21px 0px rgba(0, 0, 0, 0.23);
+  box-shadow: 5px 11px 21px 0 rgba(0, 0, 0, 0.23);
 
   @include media('>=laptop') {
     height: 181px;
