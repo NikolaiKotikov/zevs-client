@@ -296,7 +296,7 @@ export default Vue.extend({
     position: relative;
     padding-bottom: 15px;
     --background: white;
-    --border: 126px;
+    --border: 350px;
     @include left-decorator;
     @include skew-bg;
   }
@@ -350,6 +350,9 @@ export default Vue.extend({
 }
 
 .imageBottom {
+  @include media('<tablet') {
+    display: none;
+  }
   width: 100%;
   height: var(--bottom-image-height);
   bottom: var(--bottom-line-height);
