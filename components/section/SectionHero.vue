@@ -304,6 +304,15 @@ export default Vue.extend({
     --border: 350px;
     @include left-decorator;
     @include skew-bg;
+    &::after {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 100%;
+      width: 50vw;
+      content: '';
+      background-color: white;
+    }
   }
 }
 
