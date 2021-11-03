@@ -4,6 +4,7 @@ import BlockSliderControlsVue from '../slider/BlockSliderControls.vue'
 import BlockButtonCloseVue from '../BlockButtonClose.vue'
 import SvgLogoVue from '~/components/svg/SvgLogo.vue'
 import BaseImageVue from '~/components/base/BaseImage.vue'
+
 export default Vue.extend({
   name: 'BlockModalProduct',
   props: {
@@ -125,11 +126,11 @@ export default Vue.extend({
 })
 </script>
 
-<style module lang="scss">
+<style lang="scss" module>
 .close {
   position: absolute;
-  right: 20px;
   top: 20px;
+  right: 20px;
 
   @include media('<laptop') {
     width: 24px;
@@ -140,20 +141,23 @@ export default Vue.extend({
     }
   }
 }
+
 .wrapper {
   height: 100%;
   // align-items: center;
   @include media('>=tablet') {
     display: grid;
-    place-items: center;
     padding-top: 50px;
     padding-bottom: 50px;
+    place-items: center;
     @include container;
   }
   @include media('<tablet') {
+    overflow-y: auto;
     background: white;
   }
 }
+
 .el {
   position: relative;
   display: grid;
@@ -162,17 +166,17 @@ export default Vue.extend({
     --border: 35%;
   }
   @include media('<laptop', '>=tablet') {
-    --border: 40%;
     padding-bottom: 45px;
+    --border: 40%;
   }
   @include media('>=tablet') {
-    height: 80vh;
-    box-shadow: 12px 23px 45px 0 rgba(0, 0, 0, 0.5);
     grid-template-columns: repeat(var(--grid-columns), 1fr);
     gap: var(--grid-gutter);
-    --background: #{$brand};
-    @include skew-bg;
+    height: 80vh;
     background-color: white;
+    box-shadow: 12px 23px 45px 0 rgba(0, 0, 0, 0.5);
+    @include skew-bg;
+    --background: #{$brand};
   }
 }
 
@@ -181,8 +185,8 @@ export default Vue.extend({
 
 .logo {
   display: block;
-  margin-left: auto;
   margin-right: auto;
+  margin-left: auto;
 
   @include media('>=laptop') {
     width: 206px;
@@ -197,11 +201,11 @@ export default Vue.extend({
 }
 
 .title {
-  text-shadow: 1px 1px 5px black;
-  font-weight: $bold;
   color: white;
+  font-weight: $bold;
   text-align: center;
   text-transform: uppercase;
+  text-shadow: 1px 1px 5px black;
   @include media('>=laptop') {
     font-size: 40px;
   }
@@ -211,9 +215,9 @@ export default Vue.extend({
 }
 
 .slideTitle {
-  font-weight: $bold;
-
   display: block;
+
+  font-weight: $bold;
 
   @include media('>=laptop') {
     margin-bottom: 80px;
@@ -221,8 +225,8 @@ export default Vue.extend({
   }
 
   @include media('<laptop', '>=tablet') {
-    font-size: 18px;
     margin-bottom: 13px;
+    font-size: 18px;
   }
 
   @include media('<tablet') {
@@ -247,16 +251,16 @@ export default Vue.extend({
 
 .slider {
   @include media('>=laptop') {
-    padding-top: 30px;
     grid-column: 2/7;
+    padding-top: 30px;
   }
   @include media('<laptop', '>=tablet') {
     grid-column: 2/5;
     padding-top: 15px;
   }
   @include media('<tablet') {
-    padding-bottom: 10px;
     padding-right: 50px;
+    padding-bottom: 10px;
     padding-left: 50px;
     --background: #{$brand};
     @include skew-bg;
@@ -266,13 +270,13 @@ export default Vue.extend({
 
 .content {
   @include media('>=laptop') {
-    padding-right: 25px;
     grid-column: 8/-1;
     padding-top: 190px;
+    padding-right: 25px;
   }
   @include media('>=tablet') {
-    height: 100%;
     overflow-y: hidden;
+    height: 100%;
   }
   @include media('<laptop', '>=tablet') {
     grid-column: 6/-1;
@@ -287,11 +291,12 @@ export default Vue.extend({
 .contentScrollWrap {
   @include media('>=tablet') {
     display: flex;
+    overflow-y: hidden;
     flex-direction: column;
     height: 100%;
-    overflow-y: hidden;
   }
 }
+
 .contentScroll {
   --scrollbarBG: #cfd8dc;
   --thumbBG: #{$brand};
@@ -311,9 +316,9 @@ export default Vue.extend({
       background: var(--scrollbarBG);
     }
     &::-webkit-scrollbar-thumb {
-      background-color: var(--thumbBG);
-      border-radius: 6px;
       border: 3px solid var(--scrollbarBG);
+      border-radius: 6px;
+      background-color: var(--thumbBG);
     }
   }
   @include media('<laptop', '>=tablet') {
@@ -325,8 +330,8 @@ export default Vue.extend({
   display: flex;
   justify-content: space-between;
   @include media('>=laptop') {
-    font-size: 20px;
     margin-bottom: 18px;
+    font-size: 20px;
   }
   @include media('<laptop') {
     margin-bottom: 8px;
@@ -335,33 +340,35 @@ export default Vue.extend({
 }
 
 .rowTitle {
-  font-weight: $bold;
-  padding-right: 15px;
   width: 60%;
+  padding-right: 15px;
+  font-weight: $bold;
 }
+
 .rowValue {
-  font-weight: $regular;
-  width: 40%;
   flex: none;
+  width: 40%;
+  font-weight: $regular;
   text-align: right;
   word-break: break-all;
 }
 
 .slide {
   position: relative;
+
   &::before {
-    --aspect-ratio: #{math.div(520, 362)};
-    @include ratio;
-    content: '';
     display: block;
+    @include ratio;
     width: 100%;
+    content: '';
+    --aspect-ratio: #{math.div(520, 362)};
   }
 }
 
 .image {
   position: absolute;
-  left: 0;
   top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -396,6 +403,7 @@ export default Vue.extend({
       margin-left: -30px;
     }
   }
+
   [data-control='next1'] {
     @include media('>=laptop') {
       margin-right: -15%;
@@ -414,25 +422,27 @@ export default Vue.extend({
     .slider {
       :global {
         .swiper-pagination {
-          width: 100%;
           bottom: 0;
+          width: 100%;
         }
+
         .swiper-pagination-bullet {
+          opacity: 0.6;
+          background-color: white;
           box-shadow: 0 0 5px black;
           vertical-align: middle;
-          background-color: white;
-          opacity: 0.6;
           @include media('>=laptop') {
-            margin: 0 20px;
             width: 16px;
             height: 16px;
+            margin: 0 20px;
           }
           @include media('<laptop') {
-            margin: 0 10px;
             width: 7px;
             height: 7px;
+            margin: 0 10px;
           }
         }
+
         .swiper-pagination-bullet-active {
           opacity: 1;
           @include media('>=laptop') {
