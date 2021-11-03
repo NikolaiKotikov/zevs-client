@@ -38,13 +38,25 @@ export default Vue.extend({
     }
   ) {
     const thumbs = () => {
-      if (!props.thumbs?.length) {
+      if (!props.products?.length) {
         return null
       }
-      return props.thumbs.map((thumb) => {
+      return props.products.map((thumb, i) => {
         return (
-          <div class={$style.thumb}>
-            <img src={strapiURL + thumb.url} />
+          <div
+            vOn:click={() => {
+              $store.dispatch('modal/open', {
+                component: 'block-modal-product',
+                props: {
+                  slides: props.products,
+                  title: props.title,
+                  currentSlideIndex: i,
+                },
+              })
+            }}
+            class={$style.thumb}
+          >
+            <img src={strapiURL + thumb.image.url} />
           </div>
         )
       })
@@ -86,23 +98,23 @@ export default Vue.extend({
 })
 </script>
 
-<style module lang="scss">
+<style lang="scss" module>
 .el {
   display: grid;
   @include media('>=laptop') {
-    grid-template-columns: 503px 650px;
+    grid-template-columns: 503px minmax(0, 1fr);
     column-gap: 163px;
   }
   @include media('<laptop', '>=tablet') {
-    grid-template-columns: 242px 300px;
+    grid-template-columns: 242px minmax(0, 1fr);
     column-gap: 66px;
   }
 }
 
 .controls {
   @include abs-center;
-  width: 100%;
   z-index: 3;
+  width: 100%;
 }
 
 .left {
@@ -115,13 +127,14 @@ export default Vue.extend({
   }
 
   :global(.swiper-slide) {
-    height: auto;
     display: flex;
     overflow: hidden;
+    height: auto;
   }
 }
 
 .right {
+  //overflow-x: auto;
   @include media('>=tablet') {
     align-self: center;
   }
@@ -135,17 +148,17 @@ export default Vue.extend({
   font-weight: $bold;
   text-transform: uppercase;
   @include media('>=laptop') {
-    font-size: 40px;
     margin-bottom: 30px;
+    font-size: 40px;
   }
   @include media('<laptop', '>=tablet') {
-    font-size: 20px;
     margin-bottom: 20px;
+    font-size: 20px;
   }
 
   @include media('<tablet') {
-    font-size: 16px;
     margin-bottom: 10px;
+    font-size: 16px;
   }
 }
 
@@ -153,16 +166,18 @@ export default Vue.extend({
   position: absolute;
   top: 20px;
   left: 42px;
-  width: 79px;
   z-index: 2;
+  width: 79px;
 }
 
 .thumbs {
+  overflow-x: auto;
+  padding-bottom: 20px;
   @include media('<tablet') {
     display: none;
   }
   @include media('>=tablet') {
-    display: grid;
+    display: flex;
     grid-template-columns: repeat(3, 1fr);
   }
 
@@ -173,23 +188,51 @@ export default Vue.extend({
   @include media('<laptop', '>=tablet') {
     gap: 8px;
   }
+  --scrollbarBG: #cfd8dc;
+  --thumbBG: #{$brand};
+
+  &::-webkit-scrollbar {
+    height: 11px;
+  }
+
+  & {
+    scrollbar-width: thin;
+    scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--scrollbarBG);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border: 3px solid var(--scrollbarBG);
+    border-radius: 6px;
+    background-color: var(--thumbBG);
+  }
 }
 
 .thumb {
-  background: $brand;
-  border-radius: 16px;
   display: flex;
-  align-items: center;
+  flex: none;
   justify-content: center;
-  box-shadow: 5px 11px 21px 0 rgba(0, 0, 0, 0.23);
+  align-items: center;
+  border-radius: 16px;
+  background: $brand;
+  cursor: pointer;
 
-  @include media('>=laptop') {
+  @include media('>=tablet') {
+    width: 206px;
     height: 181px;
     padding: 23px;
   }
-  @include media('<laptop', '>=tablet') {
-    height: 88px;
-    padding: 11px;
+
+  &:hover {
+    box-shadow: 5px 11px 21px 0 rgba(0, 0, 0, 0.23);
   }
+
+  //@include media('<laptop', '>=tablet') {
+  //  height: 88px;
+  //  padding: 11px;
+  //}
 }
 </style>
