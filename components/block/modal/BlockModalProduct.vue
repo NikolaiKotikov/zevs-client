@@ -173,9 +173,9 @@ export default Vue.extend({
     grid-template-columns: repeat(var(--grid-columns), 1fr);
     gap: var(--grid-gutter);
     height: 80vh;
+    @include skew-bg;
     background-color: white;
     box-shadow: 12px 23px 45px 0 rgba(0, 0, 0, 0.5);
-    @include skew-bg;
     --background: #{$brand};
   }
 }
