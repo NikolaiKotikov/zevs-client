@@ -1,6 +1,7 @@
 <script>
 import Vue from 'vue'
 import BlockCatalogItemVue from '../block/BlockCatalogItem.vue'
+
 export default Vue.extend({
   name: 'SectionCatalog',
   functional: true,
@@ -45,7 +46,7 @@ export default Vue.extend({
 })
 </script>
 
-<style module lang="scss">
+<style lang="scss" module>
 .el {
   overflow-x: hidden;
   --background: #{$accent};
@@ -62,6 +63,12 @@ export default Vue.extend({
   @include media('<tablet') {
     padding-top: 20px;
     padding-bottom: 30px;
+  }
+
+  .list {
+    @include media('>=tablet', '<laptop') {
+      padding-right: 20px;
+    }
   }
 }
 
