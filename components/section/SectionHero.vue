@@ -1,6 +1,7 @@
 <script>
 import Vue from 'vue'
 import BlockFeatureVue from '../block/BlockFeature.vue'
+
 export default Vue.extend({
   name: 'SectionHero',
   functional: true,
@@ -55,10 +56,7 @@ export default Vue.extend({
           <div class={$style.top}>
             <h1 class={[$style.title, $global.h1]}>{props.title}</h1>
             <span class={[$style.level, $global.h1]}>{props.level}</span>
-            <span
-              class={$style.subtitle}
-              domPropsInnerHTML={props.subtitle}
-            ></span>
+            <span class={$style.subtitle} domPropsInnerHTML={props.subtitle} />
           </div>
           {(() =>
             props.types.length ? (
@@ -82,19 +80,19 @@ export default Vue.extend({
           <div
             class={$style.imageRight}
             style={`background-image: url(${strapiURL + props.imageRight.url})`}
-          ></div>
+          />
         </div>
         <div
           class={$style.imageBottom}
           style={`background-image: url(${strapiURL + props.imageBottom.url})`}
-        ></div>
+        />
       </section>
     )
   },
 })
 </script>
 
-<style module lang="scss">
+<style lang="scss" module>
 .el {
   position: relative;
   @include media('>=laptop') {
@@ -111,19 +109,21 @@ export default Vue.extend({
     --bottom-line-height: 12px;
   }
   @include media('<tablet') {
+    padding-bottom: var(--bottom-line-height);
     --bottom-line-height: 5px;
     --bottom-image-height: 120px;
-    padding-bottom: var(--bottom-line-height);
   }
+
   &::after {
     position: absolute;
-    content: '';
-    width: 100%;
-    left: 0;
     bottom: 0;
-    background: $brand;
+    left: 0;
+    width: 100%;
     height: var(--bottom-line-height);
+    content: '';
+    background: $brand;
   }
+
   .level {
     line-height: 1;
     @include media('>=tablet') {
@@ -131,12 +131,14 @@ export default Vue.extend({
     }
   }
 }
+
 .inner {
   position: relative;
   @include media('>=laptop') {
     padding-bottom: 30px;
   }
   @include media('<laptop', '>=tablet') {
+    max-width: 800px;
     padding-bottom: 16px;
   }
   @include media('<tablet') {
@@ -144,26 +146,30 @@ export default Vue.extend({
     overflow-x: hidden;
   }
 }
+
 .top {
-  --background: #{$accent};
   position: relative;
+  color: $white;
   @include left-decorator;
   @include skew-bg;
-  color: $white;
+  --background: #{$accent};
 
   @include media('>=laptop') {
     min-height: 395px;
-    --border: 995px;
     padding-top: 25px;
     padding-bottom: 25px;
+    --border: 995px;
   }
   @include media('<laptop', '>=tablet') {
     min-height: 190px;
-    --border: 465px;
     padding-top: 13px;
     padding-bottom: 13px;
+    --border: 465px;
   }
   @include media('<tablet') {
+    min-height: 105px;
+    padding-top: 12px;
+    padding-bottom: 8px;
     background: transparent;
     & > * {
       position: relative;
@@ -171,52 +177,49 @@ export default Vue.extend({
     }
     &::after {
       position: absolute;
-      mix-blend-mode: multiply;
-      content: '';
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
+      content: '';
+      mix-blend-mode: multiply;
       @include skew-bg;
     }
-    min-height: 105px;
     --border: 207px;
-    padding-top: 12px;
-    padding-bottom: 8px;
   }
 }
 
 .middle {
+  position: relative;
   display: flex;
   align-items: center;
-  --background: #{$brand};
-  position: relative;
+  color: $white;
   @include left-decorator;
   @include skew-bg;
-  color: $white;
-  text-transform: uppercase;
   letter-spacing: 0.07em;
+  text-transform: uppercase;
+  --background: #{$brand};
   @include media('>=laptop') {
-    --border: 847px;
     min-height: 170px;
-    font-size: 32px;
     padding-top: 20px;
     padding-bottom: 20px;
+    font-size: 32px;
+    --border: 847px;
   }
   @include media('<laptop') {
     font-size: 14px;
   }
   @include media('<laptop', '>=tablet') {
     min-height: 82px;
-    --border: 394px;
     padding-top: 10px;
     padding-bottom: 10px;
+    --border: 394px;
   }
   @include media('<tablet') {
     min-height: 115px;
-    --border: 168px;
     padding-top: 10px;
     padding-bottom: 10px;
+    --border: 168px;
   }
 }
 
@@ -232,13 +235,14 @@ export default Vue.extend({
     width: 235px;
   }
 }
+
 .type {
   @include media('>=tablet') {
     &:nth-child(odd) {
       &::after {
-        content: '•';
         margin-right: 5px;
         margin-left: 5px;
+        content: '•';
       }
     }
   }
@@ -287,8 +291,8 @@ export default Vue.extend({
     font-size: 16px;
   }
   @include media('<laptop') {
-    font-size: 12px;
     max-width: 220px;
+    font-size: 12px;
   }
 }
 
@@ -305,8 +309,8 @@ export default Vue.extend({
 
 .features {
   @include media('>=laptop') {
-    padding-top: 40px;
     margin-bottom: 30px;
+    padding-top: 40px;
   }
   @include media('<laptop', '>=tablet') {
     padding-top: 11px;
@@ -323,8 +327,8 @@ export default Vue.extend({
 .imageRight,
 .imageBottom {
   position: absolute;
-  background-position: center;
   background-repeat: no-repeat;
+  background-position: center;
   background-size: cover;
 }
 
@@ -343,20 +347,20 @@ export default Vue.extend({
     height: 420px;
   }
   @include media('<tablet') {
+    top: 8px;
+    left: 160px;
+    z-index: -1;
     width: 195px;
     height: 225px;
-    left: 160px;
-    top: 8px;
-    z-index: -1;
   }
 }
 
 .imageBottom {
+  bottom: var(--bottom-line-height);
+  width: 100%;
+  height: var(--bottom-image-height);
   @include media('<tablet') {
     display: none;
   }
-  width: 100%;
-  height: var(--bottom-image-height);
-  bottom: var(--bottom-line-height);
 }
 </style>
