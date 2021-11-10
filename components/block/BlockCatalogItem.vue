@@ -57,6 +57,12 @@ export default Vue.extend({
             class={$style.thumb}
           >
             <img src={strapiURL + thumb.image.url} />
+            {thumb.caption ? (
+              <span
+                class={$style.thumbCaption}
+                domPropsInnerHTML={thumb.caption}
+              />
+            ) : null}
           </div>
         )
       })
@@ -213,7 +219,9 @@ export default Vue.extend({
 
 .thumb {
   display: flex;
+  overflow: hidden;
   flex: none;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 16px;
@@ -240,5 +248,15 @@ export default Vue.extend({
   //  height: 88px;
   //  padding: 11px;
   //}
+}
+
+.thumbCaption {
+  overflow: hidden;
+  width: 80%;
+  color: white;
+  font-size: 14px;
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 </style>
