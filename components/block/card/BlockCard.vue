@@ -2,6 +2,7 @@
 import Vue from 'vue'
 import modCatalogDetailed from './block-card-mod-catalog_detailed.scss?module'
 import BaseImageVue from '~/components/base/BaseImage.vue'
+
 export default Vue.extend({
   name: 'BlockCard',
   props: {
@@ -29,7 +30,9 @@ export default Vue.extend({
     return (
       <div class={mod.el}>
         {this.image?.url ? (
-          <BaseImageVue image={this.image} class={[mod.image]} />
+          <div class={[mod.image]}>
+            <BaseImageVue image={this.image} />
+          </div>
         ) : null}
         {this.title ? <span class={mod.title}>{this.title}</span> : null}
         {this.caption ? (
@@ -46,4 +49,4 @@ export default Vue.extend({
 })
 </script>
 
-<style module lang="scss"></style>
+<style lang="scss" module></style>

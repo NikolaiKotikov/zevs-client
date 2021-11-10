@@ -220,6 +220,12 @@ export default Vue.extend({
   background: $brand;
   cursor: pointer;
 
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
   @include media('>=tablet') {
     width: 206px;
     height: 181px;
