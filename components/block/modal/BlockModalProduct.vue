@@ -187,17 +187,18 @@ export default Vue.extend({
   display: block;
   margin-right: auto;
   margin-left: auto;
+  width: 65px;
 
-  @include media('>=laptop') {
-    width: 206px;
-    margin-bottom: 65px;
-  }
-  @include media('<laptop', '>=tablet') {
-    margin-bottom: 40px;
-  }
-  @include media('<laptop') {
-    width: 95px;
-  }
+  //@include media('>=laptop') {
+  //  width: 206px;
+  //  margin-bottom: 65px;
+  //}
+  //@include media('<laptop', '>=tablet') {
+  //  margin-bottom: 40px;
+  //}
+  //@include media('<laptop') {
+  //  width: 95px;
+  //}
 }
 
 .title {
