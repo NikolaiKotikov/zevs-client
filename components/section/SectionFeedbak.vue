@@ -84,7 +84,6 @@ export default Vue.extend({
 
 .logo {
   position: absolute;
-  background-color: white;
   top: 50%;
   left: 0;
   transform: translateY(-50%);

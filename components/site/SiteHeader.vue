@@ -44,10 +44,10 @@ export default Vue.extend({
 
 .logo {
   @include media('>=laptop') {
-    width: 206px;
+    width: 100px;
   }
   @include media('<laptop', '>=tablet') {
-    width: 99px;
+    width: 50px;
   }
   @include media('<tablet') {
     width: 41px;
